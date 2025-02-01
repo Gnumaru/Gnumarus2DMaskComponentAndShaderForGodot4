@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://co5kgrd7wqhlm"]
+
+[ext_resource type="Shader" path="res://addons/Gnumarus2DMaskComponentAndShader/Gnumarus2DMaskShader.gdshader" id="1_ll62x"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cwwyt"]
+load_path = "res://.godot/imported/icon2.svg-f1e07c79762e614936c30d5485c2d4e6.s3tc.ctex"
+
+[resource]
+resource_name = "Gnumarus2DMaskShaderMaterial"
+shader = ExtResource("1_ll62x")
+shader_parameter/m_disable = false
+shader_parameter/m_rotation = 0.785398
+shader_parameter/m_position = Vector2(255, 259)
+shader_parameter/m_viewport_size = Vector2(1, 1)
+shader_parameter/m_scale = Vector2(5, 0.5)
+shader_parameter/m_mask_texture = SubResource("CompressedTexture2D_cwwyt")

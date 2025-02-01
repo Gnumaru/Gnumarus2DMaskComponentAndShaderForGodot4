@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://64b1l7l288ha"]
+
+[ext_resource type="Shader" path="res://addons/Gnumarus2DMaskComponentAndShader/Gnumarus2DMaskShader.gdshader" id="1_r47ie"]
+[ext_resource type="Texture2D" uid="uid://crp5v0qdgsgtf" path="res://addons/Gnumarus2DMaskComponentAndShader/Test/Mask1024.svg" id="2_d87ip"]
+[ext_resource type="Script" path="res://addons/Gnumarus2DMaskComponentAndShader/Gnumarus2DMaskComponent.gd" id="2_r8dog"]
+[ext_resource type="Texture2D" uid="uid://boslveq4do365" path="res://addons/Gnumarus2DMaskComponentAndShader/Test/GodotIcon.svg" id="3_yej3o"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tfkar"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4ga1t"]
+noise = SubResource("FastNoiseLite_tfkar")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_223hv"]
+resource_name = "Gnumarus2DMaskShaderMaterial"
+shader = ExtResource("1_r47ie")
+shader_parameter/m_disable = false
+shader_parameter/m_rotation = 0.785398
+shader_parameter/m_position = Vector2(255, 241)
+shader_parameter/m_viewport_size = Vector2(1, 1)
+shader_parameter/m_scale = Vector2(0.379021, 0.379021)
+shader_parameter/m_mask_texture = ExtResource("2_d87ip")
+
+[node name="SceneRoot" type="Node2D"]
+
+[node name="NoiseBehind" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = SubResource("NoiseTexture2D_4ga1t")
+
+[node name="MaskedSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_223hv")
+texture = ExtResource("3_yej3o")
+
+[node name="Gnumarus2DMaskComponent" type="Sprite2D" parent="MaskedSprite"]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(255, 241)
+rotation = 0.785398
+scale = Vector2(0.379021, 0.379021)
+texture = ExtResource("2_d87ip")
+script = ExtResource("2_r8dog")
